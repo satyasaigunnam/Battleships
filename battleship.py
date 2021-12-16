@@ -62,14 +62,14 @@ Parameters: int ; int
 Returns: 2D list of ints
 '''
 def emptyGrid(rows, cols):
-    matrix=[]
+    m=[]
     for i in range(rows):
-        a =[]
+        n =[]
         for j in range(cols):
-            a.append(EMPTY_UNCLICKED)
-        matrix.append(a)
+            n.append(EMPTY_UNCLICKED)
+        m.append(n)
 
-    return matrix
+    return m
 
 
 '''
@@ -78,7 +78,16 @@ Parameters: no parameters
 Returns: 2D list of ints
 '''
 def createShip():
-    return
+    ro = random.randint(1,8)
+    co = random.randint(1,8)
+    p = random.randint(0,1)
+    if p == 0:
+        ship=[[ro-1,co],[ro,co],[ro+1,co]]
+    else:
+        ship=[[ro,co-1],[ro,co],[ro,co+1]]
+
+
+    return ship
 
 
 '''
@@ -87,7 +96,14 @@ Parameters: 2D list of ints ; 2D list of ints
 Returns: bool
 '''
 def checkShip(grid, ship):
-    return
+    for i in ship:
+        
+        for j in i:
+          if grid [i [0]][i[1]] !=1:
+            return False
+    return True
+
+    
 
 
 '''
@@ -96,7 +112,15 @@ Parameters: 2D list of ints ; int
 Returns: 2D list of ints
 '''
 def addShips(grid, numShips):
-    return
+    h=0
+    while h < numShips:
+        c1 = createShip()
+        c2 = checkShip(grid,c1)
+        if c2 == True:
+            for i in c1:
+                grid [i[0]][i[1]]=SHIP_UNCLICKED
+            h=h+1    
+    return grid
 
 
 '''
@@ -275,7 +299,9 @@ def runSimulation(w, h):
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
+     
 
     ## Finally, run the simulation to test it manually ##
     # runSimulation(500, 500)
-    test.testEmptyGrid()
+    test.testAddShips()
+   
