@@ -62,14 +62,14 @@ Parameters: int ; int
 Returns: 2D list of ints
 '''
 def emptyGrid(rows, cols):
-    m=[]
+    grid=[]
     for i in range(rows):
         n =[]
         for j in range(cols):
             n.append(EMPTY_UNCLICKED)
-        m.append(n)
+        grid.append(n)
 
-    return m
+    return grid
 
 
 '''
@@ -78,13 +78,13 @@ Parameters: no parameters
 Returns: 2D list of ints
 '''
 def createShip():
-    ro = random.randint(1,8)
-    co = random.randint(1,8)
+    row = random.randint(1,8)
+    column = random.randint(1,8)
     p = random.randint(0,1)
     if p == 0:
-        ship=[[ro-1,co],[ro,co],[ro+1,co]]
+        ship=[[row-1,column],[row,column],[row+1,column]]
     else:
-        ship=[[ro,co-1],[ro,co],[ro,co+1]]
+        ship=[[row,column-1],[row,column],[row,column+1]]
 
 
     return ship
