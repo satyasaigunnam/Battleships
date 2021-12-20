@@ -33,8 +33,7 @@ def makeModel(data):
     data["computerboard"]=emptyGrid(data["rows"],data["cols"])
     addShips(data["computerboard"] ,5)
     data["numberofships"] = 5
-    data["userboard"]=createShip()
-    data["computerboard"]=createShip()
+    
     return data
 
 '''
@@ -311,6 +310,6 @@ if __name__ == "__main__":
      
 
     ## Finally, run the simulation to test it manually ##
-    # runSimulation(500, 500)
-    test.testAddShips()
+    runSimulation(500, 500)
+    test.testMakeModel()
    
