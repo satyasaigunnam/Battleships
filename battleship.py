@@ -90,12 +90,8 @@ Parameters: 2D list of ints ; 2D list of ints
 Returns: bool
 '''
 def checkShip(grid, ship):
-    for i in ship:
-        
-        for j in i:
-          if grid [i [0]][i[1]] !=1:
-            return False
-    return True
+    
+    return 
 
     
 
@@ -106,15 +102,9 @@ Parameters: 2D list of ints ; int
 Returns: 2D list of ints
 '''
 def addShips(grid, numShips):
-    h=0
-    while h < numShips:
-        c1 = createShip()
-        c2 = checkShip(grid,c1)
-        if c2 == True:
-            for i in c1:
-                grid [i[0]][i[1]]=SHIP_UNCLICKED
-            h=h+1    
-    return grid
+   
+                
+    return 
 
 
 '''
