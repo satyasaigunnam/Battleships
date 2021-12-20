@@ -78,7 +78,16 @@ Parameters: no parameters
 Returns: 2D list of ints
 '''
 def createShip():
-    return
+    ro = random.randint(1,8)
+    co = random.randint(1,8)
+    p = random.randint(0,1)
+    if p == 0:
+        ship=[[ro-1,co],[ro,co],[ro+1,co]]
+    else:
+        ship=[[ro,co-1],[ro,co],[ro,co+1]]
+
+
+    return ship
 
 
 '''
