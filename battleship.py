@@ -78,16 +78,10 @@ Parameters: no parameters
 Returns: 2D list of ints
 '''
 def createShip():
-    row = random.randint(1,8)
-    column = random.randint(1,8)
-    randomvalues = random.randint(0,1)
-    if randomvalues == 0:
-        ship=[[row-1,column],[row,column],[row+1,column]]
-    else:
-        ship=[[row,column-1],[row,column],[row,column+1]]
+ 
 
 
-    return ship
+    return 
 
 
 '''
