@@ -31,8 +31,9 @@ def makeModel(data):
     data["celsize"]=50
     data["userboard"]=emptyGrid(data["rows"],data["cols"])
     data["computerboard"]=emptyGrid(data["rows"],data["cols"])
-    addShips(data["computerboard"] ,5)
     data["numberofships"] = 5
+    addShips(data["computerboard"] ,5)
+   
     
     return data
 
