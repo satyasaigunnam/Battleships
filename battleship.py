@@ -98,10 +98,10 @@ Returns: 2D list of ints
 def addShips(grid, numShips):
     h=0
     while h < numShips:
-        c1 = createShip()
-        c2 = checkShip(grid,c1)
-        if c2 == True:
-            for i in c1:
+        createship = createShip()
+        checkship = checkShip(grid,createship)
+        if createship == True:
+            for i in createship:
                 grid [i[0]][i[1]]=SHIP_UNCLICKED
             h=h+1    
     return grid
