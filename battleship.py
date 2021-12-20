@@ -25,8 +25,17 @@ Parameters: dict mapping strs to values
 Returns: None
 '''
 def makeModel(data):
-    return
-
+    data["rows"]=10
+    data["cols"]=10
+    data["boardsize"]=500
+    data["celsize"]=50
+    data["userboard"]=emptyGrid(data["rows"],data["cols"])
+    data["computerboard"]=emptyGrid(data["rows"],data["cols"])
+    addShips(data["computerboard"] ,5)
+    data["numberofships"] = 5
+    data["userboard"]=createShip()
+    data["computerboard"]=createShip()
+    return data
 
 '''
 makeView(data, userCanvas, compCanvas)
