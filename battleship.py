@@ -88,8 +88,16 @@ Parameters: no parameters
 Returns: 2D list of ints
 '''
 def createShip():
-    return
+    row = random.randint(1,8)
+    column = random.randint(1,8)
+    ramdomvalues = random.randint(0,1)
+    if ramdomvalues == 0:
+        ship=[[row-1,column],[row,column],[row+1,column]]
+    else:
+        ship=[[row,column-1],[row,column],[row,column+1]]
 
+
+    return ship
 
 '''
 checkShip(grid, ship)
