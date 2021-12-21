@@ -122,10 +122,10 @@ Returns: 2D list of ints
 def addShips(grid, numShips):
     h=0
     while h < numShips:
-        createship = createShip()
-        checkship = checkShip(grid,createship)
-        if createship == True:
-            for i in createship:
+        c1 = createShip()
+        c2 = checkShip(grid,c1)
+        if c2 == True:
+            for i in c1:
                 grid [i[0]][i[1]]=SHIP_UNCLICKED
             h=h+1    
     return grid
@@ -315,7 +315,7 @@ def runSimulation(w, h):
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    test.testDrawGrid()
+    test.testGrid()
 
     ## Finally, run the simulation to test it manually ##
     runSimulation(500, 500)
