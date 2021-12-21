@@ -155,7 +155,12 @@ Parameters: 2D list of ints
 Returns: bool
 '''
 def isVertical(ship):
-    return
+    row=0
+    if ship[row][1]==ship[row+1][1]==ship[row+2][1]:
+        ship.sort()
+        if ship[row+1][0]-ship[row][0]==1 and ship[row+2][0]-ship[row+1][0]==1:
+            return True
+    return False
 
 
 '''
@@ -164,7 +169,7 @@ Parameters: 2D list of ints
 Returns: bool
 '''
 def isHorizontal(ship):
-    return
+ return
 
 
 '''
@@ -314,7 +319,8 @@ def runSimulation(w, h):
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    test.testGrid()
+    
 
     ## Finally, run the simulation to test it manually ##
-    runSimulation(500, 500)
+    #runSimulation(500, 500)
+    test.testIsVertical()
