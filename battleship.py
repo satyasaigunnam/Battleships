@@ -31,7 +31,7 @@ def makeModel(data):
     data["celsize"]=50
     data["userboard"]=test.testGrid()
     data["computerboard"]=emptyGrid(data["rows"],data["cols"])
-    addShips(data["computerboard"],5)
+    data["computerboard"]=addShips(data["computerboard"],5)
     data["numberofships"]=5
     return data
     
@@ -112,12 +112,11 @@ def drawGrid(data, canvas, grid, showShips):
     for row in range(data["rows"]):
         for cols in range(data["cols"]):
             if grid[row][cols]==SHIP_UNCLICKED:
-                if showShips==True:
-                    canvas.create_rectangle(cols*data["celsize"],row*data["celsize"],data["celsize"]+cols*data["celsize"], row*data["celsize"]+data["celsize"], fill="yellow")
-                else:
-                    canvas.create_rectangle(cols*data["celsize"],row*data["celsize"],data["celsize"]+cols*data["celsize"], row*data["celsize"]+data["celsize"], fill="blue")
+                
+                canvas.create_rectangle(cols*data["celsize"],row*data["celsize"],(cols+1)*data["celsize"], (row+1)*data["celsize"], fill="yellow")
             else:
-                canvas.create_rectangle(cols*data["celsize"],row*data["celsize"],data["celsize"]+cols*data["celsize"], row*data["celsize"]+data["celsize"], fill="blue") 
+                    
+                canvas.create_rectangle(cols*data["celsize"],row*data["celsize"],(cols+1)*data["celsize"], (row+1)*data["celsize"], fill="blue")
     return
 
 
