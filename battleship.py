@@ -61,15 +61,15 @@ emptyGrid(rows, cols)
 Parameters: int ; int
 Returns: 2D list of ints
 '''
-def emptyGrid(rows, cols):
-    matrix=[]
+def emptyGrid(rows, colums):
+    grid=[]
     for i in range(rows):
         a =[]
-        for j in range(cols):
+        for j in range(colums):
             a.append(EMPTY_UNCLICKED)
-        matrix.append(a)
+        grid.append(a)
 
-    return matrix
+    return Grid
 
 
 '''
@@ -78,7 +78,16 @@ Parameters: no parameters
 Returns: 2D list of ints
 '''
 def createShip():
-    return
+    row = random.randint(1,8)
+    column = random.randint(1,8)
+    ramdomvalues = random.randint(0,1)
+    if ramdomvalues == 0:
+        ship=[[row-1,column],[row,column],[row+1,column]]
+    else:
+        ship=[[row,column-1],[row,column],[row,column+1]]
+
+
+    return ship
 
 
 '''
@@ -87,7 +96,12 @@ Parameters: 2D list of ints ; 2D list of ints
 Returns: bool
 '''
 def checkShip(grid, ship):
-    return
+    for i in ship:
+        
+        for j in i:
+          if grid [i [0]][i[1]] !=1:
+            return False
+    return True
 
 
 '''
