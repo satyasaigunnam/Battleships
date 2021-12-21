@@ -61,15 +61,15 @@ emptyGrid(rows, cols)
 Parameters: int ; int
 Returns: 2D list of ints
 '''
-def emptyGrid(rows, cols):
-    matrix=[]
+def emptyGrid(rows, colums):
+    grid=[]
     for i in range(rows):
         a =[]
-        for j in range(cols):
+        for j in range(colums):
             a.append(EMPTY_UNCLICKED)
-        matrix.append(a)
+        grid.append(a)
 
-    return matrix
+    return grid
 
 
 '''
@@ -85,6 +85,7 @@ def createShip():
         ship=[[row-1,column],[row,column],[row+1,column]]
     else:
         ship=[[row,column-1],[row,column],[row,column+1]]
+     return ship
 
 
 '''
