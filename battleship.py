@@ -62,9 +62,14 @@ Parameters: int ; int
 Returns: 2D list of ints
 '''
 def emptyGrid(rows, cols):
-    
+    grid=[]
+    for i in range(rows):
+        n =[]
+        for j in range(cols):
+            n.append(EMPTY_UNCLICKED)
+        grid.append(n)
 
-    return 
+    return grid
 
 
 '''
