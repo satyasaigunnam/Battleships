@@ -113,8 +113,8 @@ def addShips(grid, numShips):
     h=0
     while h < numShips:
         createship = createShip()
-        checkship = checkShip(grid,createship)
-        if createship == True:
+        c2 = checkShip(grid,createship)
+        if c2 == True:
             for i in createship:
                 grid [i[0]][i[1]]=SHIP_UNCLICKED
             h=h+1    
