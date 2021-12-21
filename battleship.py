@@ -87,9 +87,6 @@ def createShip():
         ship=[[row,column-1],[row,column],[row,column+1]]
 
 
-    return ship
-
-
 '''
 checkShip(grid, ship)
 Parameters: 2D list of ints ; 2D list of ints
@@ -106,7 +103,6 @@ Returns: 2D list of ints
 '''
 def addShips(grid, numShips):
     return
-
 
 '''
 drawGrid(data, canvas, grid, showShips)
