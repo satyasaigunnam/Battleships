@@ -106,7 +106,15 @@ Parameters: 2D list of ints ; int
 Returns: 2D list of ints
 '''
 def addShips(grid, numShips):
-    return
+    h=0
+    while h < numShips:
+        createship = createShip()
+        checkship = checkShip(grid,createship)
+        if createship == True:
+            for i in createship:
+                grid [i[0]][i[1]]=SHIP_UNCLICKED
+            h=h+1    
+    return grid
 
 
 '''
