@@ -29,10 +29,11 @@ def makeModel(data):
     data["cols"]=10
     data["boardsize"]=500
     data["celsize"]=50
+    data["numberofships"]=5
     data["userboard"]=test.testGrid()
     data["computerboard"]=emptyGrid(data["rows"],data["cols"])
     data["computerboard"]=addShips(data["computerboard"],5)
-    data["numberofships"]=5
+    
     return data
     
 
@@ -44,7 +45,7 @@ Returns: None
 '''
 def makeView(data, userCanvas, compCanvas):
     drawGrid(data,userCanvas,data["userboard"],True)
-    drawGrid(data,compCanvas,data["computerboard"],False)
+    drawGrid(data,compCanvas,data["computerboard"],True)
     return
 
 
