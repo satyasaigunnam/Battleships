@@ -61,8 +61,15 @@ emptyGrid(rows, cols)
 Parameters: int ; int
 Returns: 2D list of ints
 '''
-def emptyGrid(rows, cols):
-    return
+def emptyGrid(rows, colums):
+    grid=[]
+    for i in range(rows):
+        a =[]
+        for j in range(colums):
+            a.append(EMPTY_UNCLICKED)
+        grid.append(a)
+
+    return grid
 
 
 '''
@@ -71,7 +78,14 @@ Parameters: no parameters
 Returns: 2D list of ints
 '''
 def createShip():
-    return
+    row = random.randint(1,8)
+    column = random.randint(1,8)
+    ramdomvalues = random.randint(0,1)
+    if ramdomvalues == 0:
+        ship=[[row-1,column],[row,column],[row+1,column]]
+    else:
+        ship=[[row,column-1],[row,column],[row,column+1]]
+    return ship
 
 
 '''
@@ -90,7 +104,6 @@ Returns: 2D list of ints
 '''
 def addShips(grid, numShips):
     return
-
 
 '''
 drawGrid(data, canvas, grid, showShips)
@@ -271,3 +284,4 @@ if __name__ == "__main__":
 
     ## Finally, run the simulation to test it manually ##
     # runSimulation(500, 500)
+    test.testEmptyGrid()
