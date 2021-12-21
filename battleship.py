@@ -85,7 +85,7 @@ def createShip():
         ship=[[row-1,column],[row,column],[row+1,column]]
     else:
         ship=[[row,column-1],[row,column],[row,column+1]]
-     return ship
+    return ship
 
 
 '''
