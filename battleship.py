@@ -29,10 +29,11 @@ def makeModel(data):
     data["cols"]=10
     data["boardsize"]=500
     data["celsize"]=50
-    data["userboard"]=test.testGrid()
+    data["userboard"]=emptyGrid(data["rows"],data["cols"])
     data["computerboard"]=emptyGrid(data["rows"],data["cols"])
     data["computerboard"]=addShips(data["computerboard"],5)
     data["numberofships"]=5
+    data["tempship"]= test.testShip()
     return data
     
 
@@ -44,7 +45,8 @@ Returns: None
 '''
 def makeView(data, userCanvas, compCanvas):
     drawGrid(data,userCanvas,data["userboard"],True)
-    drawGrid(data,compCanvas,data["computerboard"],False)
+    drawGrid(data,compCanvas,data["computerboard"],True)
+    drawShip(data,userCanvas,data["tempship"])
     return
 
 
@@ -138,9 +140,13 @@ Returns: None
 def drawGrid(data, canvas, grid, showShips):
     for row in range(data["rows"]):
         for cols in range(data["cols"]):
+            
             if grid[row][cols]==SHIP_UNCLICKED:
-                
-                canvas.create_rectangle(cols*data["celsize"],row*data["celsize"],(cols+1)*data["celsize"], (row+1)*data["celsize"], fill="yellow")
+                if showShips == True:
+                     canvas.create_rectangle(cols*data["celsize"],row*data["celsize"],(cols+1)*data["celsize"], (row+1)*data["celsize"], fill="yellow")
+                else:
+                    canvas.create_rectangle(cols*data["celsize"],row*data["celsize"],(cols+1)*data["celsize"], (row+1)*data["celsize"], fill="blue")
+
             else:
                     
                 canvas.create_rectangle(cols*data["celsize"],row*data["celsize"],(cols+1)*data["celsize"], (row+1)*data["celsize"], fill="blue")
@@ -197,9 +203,13 @@ Parameters: dict mapping strs to values ; Tkinter canvas; 2D list of ints
 Returns: None
 '''
 def drawShip(data, canvas, ship):
+    for i in ship:
+        row=i[0]
+        cols=i[1] 
+        canvas.create_rectangle(cols*data["celsize"],row*data["celsize"],(cols+1)*data["celsize"], (row+1)*data["celsize"], fill="white")
+    
+
     return
-
-
 '''
 shipIsValid(grid, ship)
 Parameters: 2D list of ints ; 2D list of ints
@@ -332,5 +342,5 @@ if __name__ == "__main__":
     
 
     ## Finally, run the simulation to test it manually ##
-    #runSimulation(500, 500)
-    test.testGetClickedCell()
+    runSimulation(500, 500)
+    test.testShip()
