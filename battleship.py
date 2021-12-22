@@ -95,7 +95,7 @@ Returns: bool
 def checkShip(grid, ship):
     for i in ship:
         
-        for j in i:
+        
           if grid [i [0]][i[1]] !=1:
             return False
     return True
