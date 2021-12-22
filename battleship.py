@@ -34,6 +34,8 @@ def makeModel(data):
     data["computerboard"]=addShips(data["computerboard"],5)
     data["numberofships"]=5
     data["tempship"]= test.testShip()
+    data["tempship"]=[]
+    data["userships"]=0
     return data
     
 
@@ -227,6 +229,15 @@ Parameters: dict mapping strs to values
 Returns: None
 '''
 def placeShip(data):
+    a = data["userboard"]
+    if shipIsValid(a,data["tempship"]):
+        for i in data["tempship"]:
+            a[i[0]][i[1]]==SHIP_UNCLICKED
+            data["usership"]=data["usership"]+1
+        else:
+            print("ship is not valid")
+            data["tempship"]=[]    
+
     return
 
 
@@ -345,4 +356,4 @@ if __name__ == "__main__":
 
     ## Finally, run the simulation to test it manually ##
     #runSimulation(500, 500)
-    test.testShipIsValid()
+    test.testplaceShip()
