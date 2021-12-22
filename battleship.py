@@ -108,9 +108,7 @@ Returns: bool
 '''
 def checkShip(grid, ship):
     for i in ship:
-        
-        for j in i:
-          if grid [i [0]][i[1]] !=1:
+        if grid [i [0]][i[1]] !=1:
             return False
     return True
 
@@ -216,6 +214,7 @@ Parameters: 2D list of ints ; 2D list of ints
 Returns: bool
 '''
 def shipIsValid(grid, ship):
+    if len(ship) == 3 and 
     return
 
 
