@@ -71,7 +71,6 @@ def mousePressed(data, event, board):
     if board=="user":
         clickUserBoard(data, row, col)
 
-    
     pass
 
 #### WEEK 1 ####
@@ -234,15 +233,14 @@ Parameters: dict mapping strs to values
 Returns: None
 '''
 def placeShip(data):
-    a = data["userboard"]
-    if shipIsValid(a,data["tempship"]):
+    g=data["userboard"]
+    if shipIsValid(g, data["tempship"]):
         for i in data["tempship"]:
-            a[i[0]][i[1]]==SHIP_UNCLICKED
-            data["usership"]=data["usership"]+1
-        else:
-            print("ship is not valid")
-            data["tempship"]=[]    
-
+            g[i[0]][i[1]]=SHIP_UNCLICKED
+        data["userships"]=data["userships"]+1
+    else:
+        print("Ship is not Valid")
+    data["tempship"]=[]
     return
 
 
@@ -252,18 +250,14 @@ Parameters: dict mapping strs to values ; int ; int
 Returns: None
 '''
 def clickUserBoard(data, row, col):
-
-    c = data["userboard"]
-
-    if[row][col] in c or data["userships"]==5:
+    g=data["userboard"]
+    if [row,col] in g or data["userships"]==5:
         return
     data["tempship"].append([row,col])
     if len(data["tempship"])==3:
         placeShip(data)
     if data["userships"]==5:
         print("You can start the game")
-
-    return
 
 
 ### WEEK 3 ###
