@@ -247,6 +247,17 @@ Parameters: dict mapping strs to values ; int ; int
 Returns: None
 '''
 def clickUserBoard(data, row, col):
+
+    c = data["userboard"]
+
+    if[row][col] in c or data["userboard"]==5:
+        return
+    data["tempship"].append([row,col])
+    if len(data["tempship"])==3:
+        placeShip(data)
+    if data["userships"]==5:
+        print("You can start the game")
+
     return
 
 
@@ -352,8 +363,7 @@ def runSimulation(w, h):
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    
 
     ## Finally, run the simulation to test it manually ##
     #runSimulation(500, 500)
-    test.testplaceShip()
+    test.testShip()
