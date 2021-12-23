@@ -70,7 +70,9 @@ def mousePressed(data, event, board):
     row,col=getClickedCell(data, event)
     if board=="user":
         clickUserBoard(data, row, col)
-         
+    if board=="comp":
+        runGameTurn(data,row,col)
+
 
     pass
 
@@ -144,21 +146,20 @@ Returns: None
 '''
 def drawGrid(data, canvas, grid, showShips):
     for row in range(data["rows"]):
-        for cols in range(data["cols"]):
-            
-            if grid[row][cols]==SHIP_UNCLICKED and showShips==False:
-                canvas.create_rectangle(cols*data["celsize"],row*data["celsize"],(cols+1)*data["celsize"], (row+1)*data["celsize"], fill="blue")
-            elif grid[row][cols]==SHIP_UNCLICKED:
-                canvas.create_rectangle(cols*data["celsize"],row*data["celsize"],(cols+1)*data["celsize"], (row+1)*data["celsize"], fill="yellow")
-            elif grid[row][cols]==EMPTY_UNCLICKED:
-                canvas.create_rectangle(cols*data["celsize"],row*data["celsize"],(cols+1)*data["celsize"], (row+1)*data["celsize"], fill="white")
-            elif grid[row][cols]==EMPTY_CLICKED:
+         for cols in range(data["cols"]):
+            if grid[row][cols]==SHIP_UNCLICKED:
+                if showShips==True:
+                    canvas.create_rectangle(cols*data["celsize"],row*data["celsize"],(cols+1)*data["celsize"], (row+1)*data["celsize"], fill="yellow")
+                else:
+                    canvas.create_rectangle(cols*data["celsize"],row*data["celsize"],(cols+1)*data["celsize"], (row+1)*data["celsize"], fill="blue")
+            elif grid[row][cols]==SHIP_CLICKED:
                 canvas.create_rectangle(cols*data["celsize"],row*data["celsize"],(cols+1)*data["celsize"], (row+1)*data["celsize"], fill="red")
+            elif grid[row][cols]==EMPTY_CLICKED:
+                canvas.create_rectangle(cols*data["celsize"],row*data["celsize"],(cols+1)*data["celsize"], (row+1)*data["celsize"], fill="white")
             else:
                 canvas.create_rectangle(cols*data["celsize"],row*data["celsize"],(cols+1)*data["celsize"], (row+1)*data["celsize"], fill="blue")
+
     return
-
-
 
 ### WEEK 2 ###
 
@@ -287,8 +288,10 @@ Parameters: dict mapping strs to values ; int ; int
 Returns: None
 '''
 def runGameTurn(data, row, col):
-
-    return
+    i = data["computerboard"]
+    if i[row][col]==SHIP_CLICKED or i[row][col]==EMPTY_CLICKED:
+        return
+    
 
 
 '''
@@ -376,4 +379,4 @@ if __name__ == "__main__":
 
     ## Finally, run the simulation to test it manually ##
     runSimulation(500, 500)
-   # test.testDrawGrid()
+    #test.testUpdateBoard()
