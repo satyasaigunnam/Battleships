@@ -229,16 +229,15 @@ Parameters: dict mapping strs to values
 Returns: None
 '''
 def placeShip(data):
-    a = data["userboard"]
-    if shipIsValid(a,data["tempship"]):
+    a=data["userboard"]
+    if shipIsValid(a, data["tempship"]):
         for i in data["tempship"]:
-            a[i[0]][i[1]]==SHIP_UNCLICKED
-            data["usership"]=data["usership"]+1
-        else:
-            print("ship is not valid")
-            data["tempship"]=[]    
-
-    return
+            a[i[0]][i[1]]=SHIP_UNCLICKED
+        data["userships"]=data["userships"]+1
+    else:
+        print("Ship is not Valid")
+    data["tempship"]=[]
+    return 
 
 
 '''
@@ -247,6 +246,7 @@ Parameters: dict mapping strs to values ; int ; int
 Returns: None
 '''
 def clickUserBoard(data, row, col):
+    
     return
 
 
@@ -352,8 +352,10 @@ def runSimulation(w, h):
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
+    test.testShip()
+
     
 
     ## Finally, run the simulation to test it manually ##
-    #runSimulation(500, 500)
-    test.testplaceShip()
+    runSimulation(500, 500)
+    
