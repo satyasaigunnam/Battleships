@@ -249,7 +249,7 @@ def clickUserBoard(data, row, col):
 
     c = data["userboard"]
 
-    if[row][col] in c or data["userboard"]==5:
+    if[row][col] in c or data["userships"]==5:
         return
     data["tempship"].append([row,col])
     if len(data["tempship"])==3:
