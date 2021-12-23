@@ -370,5 +370,4 @@ def runSimulation(w, h):
 if __name__ == "__main__":
 
     ## Finally, run the simulation to test it manually ##
-    #runSimulation(500, 500)
-    test.test()
+    runSimulation(500, 500)
