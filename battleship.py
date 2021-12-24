@@ -37,6 +37,8 @@ def makeModel(data):
     data["tempship"]=[]
     data["userships"]=0
     data["Winner"]=None
+    data["max turns"]=50
+    data["no of turns"]=0
 
     return data
     
@@ -260,7 +262,7 @@ Parameters: dict mapping strs to values ; int ; int
 Returns: None
 '''
 def clickUserBoard(data, row, col):
-    g=data["userboard"]
+    g=data["tempship"]
     if [row,col] in g or data["userships"]==5:
         return
     data["tempship"].append([row,col])
@@ -281,8 +283,7 @@ def updateBoard(data, board, row, col, player):
 
     if  board[row][col]== SHIP_UNCLICKED:
         board[row][col]=SHIP_CLICKED
-    else:
-        board[row][col]==EMPTY_UNCLICKED
+    elif board[row][col]==EMPTY_UNCLICKED:
         board[row][col]=EMPTY_CLICKED  
     
     if isGameOver(board)== True:
@@ -307,6 +308,9 @@ def runGameTurn(data, row, col):
         updateBoard(data, i, row, col, "user")
     row,col=getComputerGuess(u)
     updateBoard(data, u, row, col, "comp")
+    data["no of turns"]+=1
+    if data["no of turns"]==data["max turns"]:
+        data["Winner"]="draw"
 
     return
     
@@ -318,13 +322,13 @@ Parameters: 2D list of ints
 Returns: list of ints
 '''
 def getComputerGuess(board):
-    b = 0
-    while b !=1:
+    
+    while True:
         row = random.randint(0,9)
         col = random.randint(0,9)
         if board[row][col]==SHIP_UNCLICKED or board[row][col]==EMPTY_UNCLICKED:
             return [row, col]
-    return
+    
 
 
 '''
@@ -333,11 +337,11 @@ Parameters: 2D list of ints
 Returns: bool
 '''
 def isGameOver(board):
-    for i in range(len(board)):
-        if SHIP_UNCLICKED==board[i]:
-         return False
-    else:
-        return True
+    for i in range (len(board)):
+        for j in range (len(board)):
+            if board[i][j]==SHIP_UNCLICKED:
+                return False
+    return True
  
 
 '''
@@ -350,7 +354,8 @@ def drawGameOver(data, canvas):
         canvas.create_text(300, 50, text="congratulations", fill="black", font=('Helvetica 15 bold'))
     elif data["Winner"]=="comp":
         canvas.create_text(300, 50, text="you lost", fill="black", font=('Helvetica 15 bold'))
-
+    elif data["Winner"]=="draw":
+        canvas.create_text(200, 200, text="Out of moves and reached Draw", font=('Arial',18,'bold italic'),anchor="center")
 
     return
 
@@ -413,4 +418,4 @@ if __name__ == "__main__":
 
     ## Finally, run the simulation to test it manually ##
     runSimulation(500, 500)
-    test.testIsGameOver()
+    
