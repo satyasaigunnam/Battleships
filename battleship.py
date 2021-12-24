@@ -328,11 +328,11 @@ Parameters: 2D list of ints
 Returns: bool
 '''
 def isGameOver(board):
-    for i in range(len(board)):
-        if SHIP_UNCLICKED==board[i]:
-         return False
-    else:
-        return True
+      for i in range (len(board)):
+        for j in range (len(board)):
+            if board[i][j]==SHIP_UNCLICKED:
+                return False
+    return True
  
 
 '''
