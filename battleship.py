@@ -37,6 +37,7 @@ def makeModel(data):
     data["tempship"]=[]
     data["userships"]=0
     data["Winner"]=None
+
     return data
     
 
@@ -50,6 +51,7 @@ def makeView(data, userCanvas, compCanvas):
     drawGrid(data,userCanvas,data["userboard"],True)
     drawGrid(data,compCanvas,data["computerboard"],False)
     drawShip(data,userCanvas,data["tempship"])
+    drawGameOver(data,userCanvas)
     return
 
 
@@ -68,11 +70,14 @@ Parameters: dict mapping strs to values ; mouse event object ; 2D list of ints
 Returns: None
 '''
 def mousePressed(data, event, board):
+    if data["Winner"]!=None:
+        return None
     row,col=getClickedCell(data, event)
     if board=="user":
         clickUserBoard(data, row, col)
     if board=="comp":
         runGameTurn(data,row,col)
+      
 
 
 
@@ -341,6 +346,12 @@ Parameters: dict mapping strs to values ; Tkinter canvas
 Returns: None
 '''
 def drawGameOver(data, canvas):
+    if data["Winner"]=="user":
+        canvas.create_text(300, 50, text="congratulations", fill="black", font=('Helvetica 15 bold'))
+    elif data["Winner"]=="comp":
+        canvas.create_text(300, 50, text="you lost", fill="black", font=('Helvetica 15 bold'))
+
+
     return
 
 
@@ -401,5 +412,5 @@ def runSimulation(w, h):
 if __name__ == "__main__":
 
     ## Finally, run the simulation to test it manually ##
-    #runSimulation(500, 500)
+    runSimulation(500, 500)
     test.testIsGameOver()
