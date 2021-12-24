@@ -47,7 +47,7 @@ Returns: None
 '''
 def makeView(data, userCanvas, compCanvas):
     drawGrid(data,userCanvas,data["userboard"],True)
-    drawGrid(data,compCanvas,data["computerboard"],True)
+    drawGrid(data,compCanvas,data["computerboard"],False)
     drawShip(data,userCanvas,data["tempship"])
     return
 
@@ -74,7 +74,7 @@ def mousePressed(data, event, board):
         runGameTurn(data,row,col)
 
 
-    pass
+
 
 #### WEEK 1 ####
 
@@ -289,8 +289,15 @@ Returns: None
 '''
 def runGameTurn(data, row, col):
     i = data["computerboard"]
+    u = data["userboard"]
     if i[row][col]==SHIP_CLICKED or i[row][col]==EMPTY_CLICKED:
         return
+    else:
+        updateBoard(data, i, row, col, "user")
+    row,col=getComputerGuess(u)
+    updateBoard(data, u, row, col, "comp")
+
+    return
     
 
 
@@ -300,6 +307,12 @@ Parameters: 2D list of ints
 Returns: list of ints
 '''
 def getComputerGuess(board):
+    b = 0
+    while b !=1:
+        row = random.randint(0,9)
+        col = random.randint(0,9)
+        if board[row][col]==SHIP_UNCLICKED or board[row][col]==EMPTY_UNCLICKED:
+            return [row, col]
     return
 
 
@@ -379,4 +392,4 @@ if __name__ == "__main__":
 
     ## Finally, run the simulation to test it manually ##
     runSimulation(500, 500)
-    #test.testUpdateBoard()
+    test.testGetComputerGuess()
